@@ -2,10 +2,12 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
+// import AppProdCards from './components/AppProdCards.vue';
 export default {
   components:{
     AppHeader,
 	AppMain,
+	// AppProdCards,
   }
 
 }
@@ -16,6 +18,7 @@ export default {
 	<div>
 		<AppHeader/>
 		<AppMain/>
+		<!-- <AppProdCards/> -->
   	</div>
 </template>
 

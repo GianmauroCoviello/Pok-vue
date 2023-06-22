@@ -1,6 +1,12 @@
 <!-- parte logica  -->
 <script>
+// importazione componenti
+import AppProdCards from './AppProdCards.vue';
 export default {
+    components:{
+        // chiamata delle componenti
+        AppProdCards,
+    }
   
 }
 </script>
@@ -8,11 +14,14 @@ export default {
 <!-- parte grafica -->
 <template lang="">
   <div>
+    <!-- struttura pokedex -->
     <div class="container">
         <div class="row">
             <div class="container-pokedex">
                 <div class="display-pokedex">
-
+                      <!-- componente che si occupa della creazione delle cards dei pokemon -->
+                    <AppProdCards/>
+                
                 </div>
 
             </div>
@@ -24,29 +33,35 @@ export default {
 
 <!-- parte di style -->
 <style lang="scss" scoped>
-    .row{
-        width: 1170px;
-        display: flex;
-        margin: 0 auto;
-
-        .container-pokedex{
-            width: 100%;
-            background-color: rgb(195, 191, 191);
-            border-radius: 13px;
-            padding: 30px 15px;
-            
+    .container{
+        padding-bottom: 20px;
 
 
-            .display-pokedex{
-                height: 400px;
-                background-color: rgb(88, 86, 86);
-
-            }
-            
-
-
-        }
-    }
+        
     
-  
-</style>
+        .row{
+            width: 1170px;
+            display: flex;
+            margin: 0 auto;
+
+            .container-pokedex{
+                width: 100%;
+                background-color: rgb(195, 191, 191);
+                border-radius: 13px;
+                padding: 30px 15px;
+                
+
+
+                .display-pokedex{
+                    
+                    background-color: rgb(88, 86, 86);
+                    display: flex;
+                    flex-wrap: wrap;
+
+                }
+                
+            }
+        }
+        
+    }
+    </style>
