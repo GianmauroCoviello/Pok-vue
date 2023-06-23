@@ -30,7 +30,7 @@ export default {
 		box-sizing: border-box;
   	}
 	body{
-		background-color: red;
+		background-color: rgb(196, 8, 8);
 	}
 
 
