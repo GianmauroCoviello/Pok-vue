@@ -25,14 +25,14 @@ export default {
 
 <template lang="">
     <!-- ciclo delle card pokemon -->
-    <div class="card-pokemon" v-for="(pokemon,index) in cardsPokemon">
+    <div class="card-pokemon" v-for="(pokemon,index) in cardsPokemon" :class="pokemon.type1 === 'Grass' ? 'grass' : pokemon.type1 === 'Fire' ? 'fire' : pokemon.type1 === 'Water' ? 'water' : ''">
         <!-- inseriamo all'interno della card le proprietà dell array -->
         <div class="content-img-pokemon">
             <img :src="pokemon.imageUrl"> <!--link dell'immagine-->
         </div>
         <p>{{pokemon.number}}</p> <!--numero della generazione del pokemon-->
         <p><strong>{{pokemon.name}}</strong></p> <!--nome del pokemon-->
-        <p>{{pokemon.type1}}</p>  <!--type del pokemon-->
+        <p>{{pokemon.type1}}</p>  <!--type (fuoco, acqua, terra ecc..) del pokemon-->
         
     </div>
 </template>
@@ -43,7 +43,6 @@ export default {
     .card-pokemon{
         width: calc(100%/5 - 20px);
         padding: 20px 0;
-        background-color: rgb(149, 77, 77);
         margin: 10px;
         border-radius: 13px;
         display: flex;
@@ -71,6 +70,15 @@ export default {
         }
         
     }
-
+    .fire{
+        background-color: rgb(253, 89, 89);
+    }
+    .grass{
+        background-color: rgb(164, 255, 118);
+    }
+    .water{
+        background-color: rgb(105, 193, 255);
+        
+    }
     
 </style>
