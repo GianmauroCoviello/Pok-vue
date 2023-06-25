@@ -4,7 +4,7 @@ import { store } from '../store';
 export default {
     data() {
         return {
-            store
+            store,
         }
     },
     
@@ -14,8 +14,9 @@ export default {
 <template lang="">
     <div>
         <select name="" id="">
-            
-            <option value="">
+            <option value="">selected type</option>
+            <option v-for="(type,index) in store.listType"  :key="index">
+                {{type}}
 
             </option>
         </select>
@@ -31,7 +32,7 @@ export default {
 
 
         select{
-            width: 40px;
+            width: 100px;
         }
 
     }

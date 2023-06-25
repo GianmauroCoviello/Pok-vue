@@ -1,14 +1,29 @@
 <!-- parte logica  -->
 <script>
+import axios from 'axios';
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
+import { store } from './store'
 // import AppProdCards from './components/AppProdCards.vue';
 export default {
-  components:{
-    AppHeader,
-	AppMain,
+	components:{
+		AppHeader,
+		AppMain,
 
-  }
+
+	},
+	data() {
+		return {
+		store,
+		}
+	},
+	mounted(){
+		axios.get(store.apiType1).then((response) => {
+		store.listType = response.data
+		console.log(response.data)
+		})
+	}
+	
 
 }
 </script>

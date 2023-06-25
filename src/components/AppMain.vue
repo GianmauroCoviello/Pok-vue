@@ -50,13 +50,16 @@ export default {
                 border-radius: 13px;
                 padding: 30px 15px;
                 
+                
 
 
                 .display-pokedex{
-                    
+                    overflow-y: auto;
                     background-color: rgb(88, 86, 86);
                     display: flex;
                     flex-wrap: wrap;
+                    height: 500px;
+                   
 
                 }
                 
