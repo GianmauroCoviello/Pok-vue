@@ -2,11 +2,13 @@
 <script>
 // importazione componenti
 import AppProdCards from './AppProdCards.vue';
+// import { store } from './store.js';
 export default {
     components:{
         // chiamata delle componenti
         AppProdCards,
-    }
+    },
+    
   
 }
 </script>
@@ -34,7 +36,7 @@ export default {
 <!-- parte di style -->
 <style lang="scss" scoped>
     .container{
-        padding-bottom: 20px;
+        padding-bottom: 50px;
 
 
         
@@ -58,7 +60,7 @@ export default {
                     background-color: rgb(88, 86, 86);
                     display: flex;
                     flex-wrap: wrap;
-                    height: 500px;
+                    height: 600px;
                    
 
                 }

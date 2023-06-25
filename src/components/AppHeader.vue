@@ -4,8 +4,21 @@ import AppSelectType from './AppSelectType.vue';
 export default {
     components:{
         AppSelectType
-    }
-  
+    },
+    data() {
+        return {
+           
+            
+        }
+    },
+    methods: {
+        selectedPokemonType(){
+            console.log('funziona')
+        }
+        
+    },
+   
+   
 }
 </script>
 
@@ -28,9 +41,9 @@ export default {
                     <div class="point bg-green">
                         
                     </div>
-
+                    
                 </div>
-                <AppSelectType/>
+                <AppSelectType @search="selectedPokemonType"/>
             </div>
         </div>
     </header>
@@ -71,7 +84,7 @@ export default {
                 border: 2px solid white;
                 background-color: blue;
                 margin-right: 10px;
-                background: linear-gradient(332deg, rgb(64, 54, 243) 0%, rgb(45, 45, 219) 30%, rgba(255, 255, 255, 1) 100%);
+                
 
             }
             
