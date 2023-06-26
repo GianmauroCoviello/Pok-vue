@@ -1,23 +1,17 @@
 <!-- parte logica  -->
 <script>
-import AppSelectType from './AppSelectType.vue';
+import { store } from '../store';
+
 export default {
-    components:{
-        AppSelectType
-    },
     data() {
         return {
+            store
            
             
         }
     },
-    methods: {
-        selectedPokemonType(){
-            console.log('funziona')
-        }
-        
-    },
-   
+    
+    
    
 }
 </script>
@@ -43,7 +37,13 @@ export default {
                     </div>
                     
                 </div>
-                <AppSelectType @search="selectedPokemonType"/>
+                <div class="container-select">
+                    <select name="" id="" v-model="store.pokemonType">
+                        <option value="">SELECT TYPE</option>
+                        <option v-for="(type,index) in store.listTypePokemon " :key="index" @click="$emit('search')">{{type}}</option>
+                    </select>
+                </div>
+                
             </div>
         </div>
     </header>
@@ -59,10 +59,13 @@ export default {
         display: flex;
         margin: 0 auto;
         justify-content: space-between;
+        align-items: center;
 
         .col-100{
             display: flex;
             padding: 30px;
+            
+
             
 
 
@@ -104,6 +107,8 @@ export default {
                 background: linear-gradient(150deg, rgba(255, 255, 255, 1) 7%, rgba(246, 3, 3, 1) 64%, rgba(108, 1, 1, 1) 98%);
         
             }
+
+            
 
 
         }

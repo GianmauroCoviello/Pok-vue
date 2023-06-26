@@ -4,6 +4,7 @@
 import axios from 'axios';
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
+import AppProdCards from './components/AppProdCards.vue';
 
 // importiamo lo store managment
 import { store } from './store'
@@ -23,12 +24,31 @@ export default {
 	}, 
 	// insriamo mounted o create
 	mounted(){
-		// inseriamo la variabile contenuta nello state managment(store) che contiene il link dell'API che richiami solamente il type1
-		axios.get(store.apiType1).then((response) => {
-		// inseriamo all'interno della variabile contenente l'array vuoto il response e il data dell'API formando cosi un nuovo array che conterrà le singole voci di type1
-		store.listType = response.data
-		console.log(response.data)
-		})
+        
+        axios.get(store.UrlTypeApi).then((response)=>{
+            
+            store.listTypePokemon = response.data
+            console.log(response.data)
+        })
+		this.searchType()
+	},
+	methods: {
+		searchType(){
+			
+			let myUrl = store.UrlApi
+			if (store.pokemonType !== '') {
+				myUrl += `&eq[type1]=${store.pokemonType}`
+				
+			}
+			
+			
+			// effettuo la chiamata ad axios per popolare l'array dei pokemon
+			axios.get(myUrl).then((response) => {
+				store.pokemonCards = response.data.docs
+				console.log(response.data)
+			})
+		}
+		
 	},
 	
 	
@@ -39,7 +59,7 @@ export default {
 <!-- parte grafica -->
 <template lang="">
 	<div>
-		<AppHeader />
+		<AppHeader @search="searchType" />
 		<AppMain/>
   	</div>
 </template>
