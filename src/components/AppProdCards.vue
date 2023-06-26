@@ -57,8 +57,8 @@ export default {
                     
 
         .content-img-pokemon{
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             
 
@@ -74,6 +74,7 @@ export default {
         p{
             margin-top: 10px;
             color: white;
+            font-weight: bold;
         }
     }   
     
