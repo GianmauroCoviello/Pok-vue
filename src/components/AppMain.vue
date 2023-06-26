@@ -3,11 +3,14 @@
 // importazione componenti
 import AppProdCards from './AppProdCards.vue';
 import { store } from '../store';
+// importazione componente del loader
+import AppLoader from './AppLoader.vue'
 // import { store } from './store.js';
 export default {
     components:{
         // chiamata delle componenti
         AppProdCards,
+        AppLoader
     },
     data() {
         return {
@@ -22,11 +25,11 @@ export default {
 
 <!-- parte grafica -->
 <template lang="">
-  <div>
+  
     <!-- struttura pokedex -->
-    <div class="container">
+    <div class="container" v-if="store.loading === false">
         <div class="row">
-            <div class="container-pokedex">
+            <div class="container-pokedex" >
                 <div class="display-pokedex">
                     <!-- ciclo delle card -->
                     <div class="card-pokemon" v-for="(pokemon,index) in store.pokemonCards">
@@ -34,14 +37,17 @@ export default {
                         <AppProdCards :MyPokemon="pokemon"/>
                     </div>
                     
+                    
                    
                 </div>
+                
 
             </div>
-        </div>
+                
+        </div>       
     </div>
+    <AppLoader v-else/> 
     
-  </div>
 </template>
 
 <!-- parte di style -->

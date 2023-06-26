@@ -4,7 +4,7 @@
 import axios from 'axios';
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
-import AppProdCards from './components/AppProdCards.vue';
+
 
 // importiamo lo store managment
 import { store } from './store'
@@ -32,6 +32,7 @@ export default {
         })
 		// richiamo la funzione in mounted
 		this.searchType()
+		
 	},
 	methods: {
 		searchType(){
@@ -50,7 +51,9 @@ export default {
 			axios.get(myUrl).then((response) => {
 				store.pokemonCards = response.data.docs
 				console.log(response.data)
+				store.loading = false
 			})
+			
 		}
 		
 	},

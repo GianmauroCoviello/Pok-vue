@@ -1,8 +1,13 @@
 <!-- parte logica  -->
 <script>
 import { store } from '../store';
+// inseriamo la componente del loader
+import AppLoader from './AppLoader.vue'
 
 export default {
+    components: {
+        AppLoader
+    },
     data() {
         return {
             store
@@ -18,8 +23,8 @@ export default {
 
 <!-- parte grafica -->
 <template lang="">
-  <div>
-    <header>
+  
+    <header v-if="store.loading === false">
         <div class="container">
             <div class="row">
                 <div class="col-100">
@@ -52,10 +57,10 @@ export default {
                 
             </div>
         </div>
+
     </header>
     
-    
-  </div>
+    <AppLoader v-else/>
 </template>
 
 <!-- parte di style -->

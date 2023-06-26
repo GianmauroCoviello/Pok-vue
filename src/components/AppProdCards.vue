@@ -1,12 +1,13 @@
 <script>
 
-
+// importazione componenti
 import { store } from '../store'
+
 
 export default {
     // richiamo della props nella componente figlia
     props:{
-        MyPokemon: Object // indica che il props è un oggetto
+        MyPokemon: Object, // indica che il props è un oggetto
     },
     data(){
         return{
@@ -20,7 +21,7 @@ export default {
         // funzione che restituira i suoi specifici colori alle determinate card in base al loro type1
         cardsPokemonColor(){
             return  this.MyPokemon.color.toLowerCase()
-            console.log(MyPokemon)
+
         }
     }
     
@@ -36,7 +37,7 @@ export default {
             <img :src="MyPokemon.imageUrl" alt="">
         </div>
         <p>{{ MyPokemon.number }}</p>
-        <p>{{ MyPokemon.name }}</p>
+        <h3>{{ MyPokemon.name }}</h3>
         <p>{{ MyPokemon.type1 }}</p>
     </div>   
     
@@ -75,6 +76,12 @@ export default {
             margin-top: 10px;
             color: white;
             font-weight: bold;
+        }
+        h3{
+            margin-top: 10px;
+            color: white;
+            font-weight: bold;
+
         }
     }   
     
