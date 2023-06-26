@@ -38,8 +38,10 @@ export default {
                     
                 </div>
                 <div class="container-select">
-                    <select name="" id="" v-model="store.pokemonType">
+                    <!-- inseriamo la select con il v-model che riprenderà la variabile vuota nello store -->
+                    <select  v-model="store.pokemonType">
                         <option value="">SELECT TYPE</option>
+                        <!-- ciclo le option indicando il type dei pokemon e inserendoli nell'array vuoto di riferimento in store  -->
                         <option v-for="(type,index) in store.listTypePokemon " :key="index" @click="$emit('search')">{{type}}</option>
                     </select>
                 </div>

@@ -24,19 +24,23 @@ export default {
 	}, 
 	// insriamo mounted o create
 	mounted(){
-        
+        // effettuo la chiamata axios e faccio la chiamata alla variabile contenuta nello store che contiene il link API che ci serve
         axios.get(store.UrlTypeApi).then((response)=>{
-            
+            // inserisco la risposta API nell'array
             store.listTypePokemon = response.data
             console.log(response.data)
         })
+		// richiamo la funzione in mounted
 		this.searchType()
 	},
 	methods: {
 		searchType(){
 			
+			//  variabile che contiene il link API  
 			let myUrl = store.UrlApi
+			// con questa condizione verifico se il contenuto e diverso da stringa vuota
 			if (store.pokemonType !== '') {
+				// se il contenuto e diverso da stringa vuota aggiungo il parametro type1 all' API
 				myUrl += `&eq[type1]=${store.pokemonType}`
 				
 			}
@@ -59,6 +63,7 @@ export default {
 <!-- parte grafica -->
 <template lang="">
 	<div>
+		<!-- riprendo la componente $emit -->
 		<AppHeader @search="searchType" />
 		<AppMain/>
   	</div>

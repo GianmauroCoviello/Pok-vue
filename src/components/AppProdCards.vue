@@ -1,9 +1,13 @@
 <script>
-// importiamo il metodo axios per l'API
-import axios from 'axios';
-import { store } from '../store';
+
+
+import { store } from '../store'
 
 export default {
+    // richiamo della props nella componente figlia
+    props:{
+        MyPokemon: Object // indica che il props è un oggetto
+    },
     data(){
         return{
             
@@ -11,14 +15,15 @@ export default {
 
         }
     },
-    // mounted(){
-        
-    //     axios.get(store.UrlApi).then((response)=>{
-            
-    //         store.pokemonCards = response.data.docs
-    //         console.log(response.data)
-    //     })
-	// }
+    // insere il computed con la funzione da richiamare
+    computed:{
+        // funzione che restituira i suoi specifici colori alle determinate card in base al loro type1
+        cardsPokemonColor(){
+            return  this.MyPokemon.color.toLowerCase()
+            console.log(MyPokemon)
+        }
+    }
+    
    
     
     
@@ -26,31 +31,30 @@ export default {
 </script>
 
 <template lang="">
-    <!-- ciclo delle card pokemon -->
-    <div class="card-pokemon" v-for="(pokemon,index) in store.pokemonCards" :class="pokemon.type1 === 'Grass' ? 'grass' : pokemon.type1 === 'Fire' ? 'fire' : pokemon.type1 === 'Water' ? 'water' : ''">
-        <!-- inseriamo all'interno della card le proprietà dell array -->
+    <div class="color-card" :style="{ 'background-color': cardsPokemonColor }">
         <div class="content-img-pokemon">
-            <img :src="pokemon.imageUrl"> <!--link dell'immagine-->
+            <img :src="MyPokemon.imageUrl" alt="">
         </div>
-        <p>{{pokemon.number}}</p> <!--numero della generazione del pokemon-->
-        <p><strong>{{pokemon.name}}</strong></p> <!--nome del pokemon-->
-        <p>{{pokemon.type1}}</p>  <!--type (fuoco, acqua, terra ecc..) del pokemon-->
-        
-    </div>
+        <p>{{ MyPokemon.number }}</p>
+        <p>{{ MyPokemon.name }}</p>
+        <p>{{ MyPokemon.type1 }}</p>
+    </div>   
+    
 </template>
 
 
-<style lang="scss" >
+<style lang="scss" scoped>
     
-    .card-pokemon{
-        width: calc(100%/5 - 20px);
-        padding: 20px 0;
-        margin: 10px;
+    .color-card{
+        width: 100%;
+        height: 100%;
+        padding: 30px 0;
+        // margin: 10px;
         border-radius: 13px;
         display: flex;
         flex-direction: column;
         align-items: center;
-
+                    
 
         .content-img-pokemon{
             width: 120px;
@@ -69,18 +73,9 @@ export default {
 
         p{
             margin-top: 10px;
+            color: white;
         }
-        
-    }
-    .fire{
-        background-color: rgb(253, 89, 89);
-    }
-    .grass{
-        background-color: rgb(164, 255, 118);
-    }
-    .water{
-        background-color: rgb(105, 193, 255);
-        
-    }
+    }   
+    
     
 </style>

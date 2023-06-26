@@ -2,12 +2,19 @@
 <script>
 // importazione componenti
 import AppProdCards from './AppProdCards.vue';
+import { store } from '../store';
 // import { store } from './store.js';
 export default {
     components:{
         // chiamata delle componenti
         AppProdCards,
     },
+    data() {
+        return {
+            store
+        }
+    },
+    
     
   
 }
@@ -21,9 +28,13 @@ export default {
         <div class="row">
             <div class="container-pokedex">
                 <div class="display-pokedex">
-                      <!-- componente che si occupa della creazione delle cards dei pokemon -->
-                    <AppProdCards/>
-                
+                    <!-- ciclo delle card -->
+                    <div class="card-pokemon" v-for="(pokemon,index) in store.pokemonCards">
+                        <!-- inserimento della props all'interno della componente padre -->
+                        <AppProdCards :MyPokemon="pokemon"/>
+                    </div>
+                    
+                   
                 </div>
 
             </div>
@@ -57,11 +68,21 @@ export default {
 
                 .display-pokedex{
                     overflow-y: auto;
-                    background-color: rgb(88, 86, 86);
+                    background-color: rgb(109, 104, 104);
                     display: flex;
                     flex-wrap: wrap;
-                    height: 600px;
-                   
+                    height: 530px;
+
+
+                    
+                    .card-pokemon{
+                        width: calc(100%/5 - 20px);
+                        margin: 10px;
+                        border-radius: 13px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                    }                
 
                 }
                 
