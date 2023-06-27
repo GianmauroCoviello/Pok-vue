@@ -5,7 +5,7 @@ export const store = reactive({
     // array che contiene le card dei pokemon
     pokemonCards: [],
     // api che prende tutti i pokemon
-    UrlApi: 'https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons/?per=1050',
+    UrlApi: 'https://41tyokboji.execute-api.eu-central-1.amazonaws.com/dev/api/v1/pokemons/?per=15',
 
     // variabile che contiene stringa vuota per le voci della select
     pokemonType: '',
